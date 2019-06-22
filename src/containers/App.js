@@ -26,11 +26,11 @@ const mapDispatchToProps = (dispatch) => {
 
 class App extends Component {
 
-	componentDidMount(){
+	componentDidMount() {
 		this.props.onRequestRobots();
 	}
 
-	render(){
+	render() {
 		const { searchField, onSearchChange, robots, isPending } = this.props;
 		const filteredRobots = robots.filter(robot => {
 			return robot.name.toLowerCase().includes(searchField.toLowerCase())
@@ -38,9 +38,9 @@ class App extends Component {
 		return isPending ?
 			<h1>Loading</h1> :
 			(
-				<div className = 'tc'>
-					<h1 className='f1'>RoboFriends</h1>
-					<SearchBox searchChange={onSearchChange}/>
+				<div className='tc'>
+					<h1 className='f2'>RoboFriends</h1>
+					<SearchBox searchChange={onSearchChange} />
 					<Scroll>
 						<ErrorBoundry>
 							<CardList robots={filteredRobots} />
@@ -48,7 +48,7 @@ class App extends Component {
 					</Scroll>
 				</div>
 			);
-	}	
+	}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
